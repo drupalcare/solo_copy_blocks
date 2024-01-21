@@ -1,0 +1,6 @@
+solo_copy_blocks.admin_form:
+  title: 'Copy Blocks to Solo Theme'
+  description: 'Copy blocks and its configuration from the default theme(W3CSS Theme or a Sub-theme) to Solo theme.'
+  parent: system.admin_config_system
+  route_name: solo_copy_blocks.admin_form
+  weight: 100

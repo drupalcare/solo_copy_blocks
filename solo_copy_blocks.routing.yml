@@ -1,0 +1,7 @@
+solo_copy_blocks.admin_form:
+  path: '/admin/config/system/solo-copy-blocks'
+  defaults:
+    _form: '\Drupal\solo_copy_blocks\Form\SoloCopyBlocksForm'
+    _title: 'Copy Blocks to Solo Theme'
+  requirements:
+    _permission: 'administer themes'

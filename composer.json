@@ -1,0 +1,34 @@
+{
+    "name": "drupal/solo_copy_blocks",
+    "description": "A custom module to copy blocks and config from W3CSS Theme or any sub-theme to Solo Theme.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Alaa Haddad (alaahaddad.com)",
+            "homepage": "https://www.drupal.org/u/flashwebcenter",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "https://drupal.org/project/solo_copy_blocks",
+    "require": {
+        "drupal/core": "^10"
+    },
+    "support": {
+        "issues": "https://drupal.org/project/issues/solo_copy_blocks",
+        "source": "https://git.drupalcode.org/project/solo_copy_blocks"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Drupal\\solo_copy_blocks\\": "src/"
+        }
+    }
+}
+
+
