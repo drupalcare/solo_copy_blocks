@@ -2,5 +2,5 @@ name: 'Solo Copy Blocks'
 type: module
 description: 'A custom module to copy blocks and config from W3CSS Theme or any sub-theme to Solo Theme.'
 package: Custom
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^10.1 || ^11
 configure: solo_copy_blocks.admin_form
