@@ -16,7 +16,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
  * Implements hook_help().
  */
 function solo_copy_blocks_help($route_name, RouteMatchInterface $route_match) {
-  if ($route_name === 'help.page.paragraphs_bundles') {
+  if ($route_name === 'help.page.solo_copy_blocks') {
     return _solo_copy_blocks_helper_render_readme();
   }
   return NULL;
