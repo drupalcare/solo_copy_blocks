@@ -12,7 +12,7 @@
     ],
     "homepage": "https://drupal.org/project/solo_copy_blocks",
     "require": {
-        "drupal/core": "^10"
+        "drupal/core": "*"
     },
     "support": {
         "issues": "https://drupal.org/project/issues/solo_copy_blocks",
