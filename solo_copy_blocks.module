@@ -10,16 +10,17 @@
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 
+use Drupal\Core\Hook\Attribute\LegacyHook;
+use Drupal\solo_copy_blocks\Hook\SoloCopyBlocksHooks;
+use Drupal\Component\Utility\DeprecationHelper;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_help().
  */
+#[LegacyHook]
 function solo_copy_blocks_help($route_name, RouteMatchInterface $route_match) {
-  if ($route_name === 'help.page.solo_copy_blocks') {
-    return _solo_copy_blocks_helper_render_readme();
-  }
-  return NULL;
+  return \Drupal::service(SoloCopyBlocksHooks::class)->help($route_name, $route_match);
 }
 
 /**
@@ -86,7 +87,7 @@ function _solo_copy_blocks_and_config_to_solo_theme($source_theme, $target_theme
     $blocks_migrated = 0;
     foreach ($blocks as $block_id => $block) {
       $current_region = $block->getRegion();
-      $target_theme_regions = system_region_list($target_theme, REGIONS_ALL);
+      $target_theme_regions = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.4.0', fn() => \Drupal::service('theme_handler')->getTheme($target_theme)->listAllRegions(), fn() => system_region_list($target_theme, REGIONS_ALL));
 
       // Handle the specific case for region mapping.
       if ($current_region === 'fixed_search_bar' && isset($target_theme_regions['fixed_search_block'])) {

@@ -1,0 +1,5 @@
+
+services:
+  Drupal\solo_copy_blocks\Hook\SoloCopyBlocksHooks:
+    class: Drupal\solo_copy_blocks\Hook\SoloCopyBlocksHooks
+    autowire: true
