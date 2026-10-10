@@ -20,7 +20,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
  */
 #[LegacyHook]
 function solo_copy_blocks_help($route_name, RouteMatchInterface $route_match) {
-  return \Drupal::service(SoloCopyBlocksHooks::class)->help($route_name, $route_match);
+  return \Drupal::classResolver(SoloCopyBlocksHooks::class)->help($route_name, $route_match);
 }
 
 /**
