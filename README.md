@@ -41,6 +41,15 @@ Built for W3CSS theme users, Solo Move Blocks ensures a headache-free migration
    - Click it or visit your-site/admin/config/system/solo-copy-blocks.
    - Click "Copy Blocks" to start the block migration process.
 
+**Copying replaces Solo's blocks.** Every block currently placed in the Solo
+theme is deleted and replaced by the copies from the default theme. Run it
+while your previous theme (for example W3CSS) is still the default theme. If
+Solo itself is the default theme, or the default theme has no blocks, the
+module refuses and deletes nothing. Releases 1.0.0 to 1.0.3 did not refuse:
+with Solo as the default theme they deleted every Solo block and copied none
+back. Blocks lost that way can only be restored from a backup or a
+configuration export.
+
 ## Compatibility
 
 - Compatible with Drupal 8 and Drupal 9.

@@ -22,7 +22,7 @@ class SoloCopyBlocksForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['description'] = [
-      '#markup' => $this->t('Use this form to copy blocks from the default theme to the solo theme.'),
+      '#markup' => $this->t('Use this form to copy blocks from the default theme to the solo theme. All blocks currently placed in the solo theme are deleted and replaced by the copies. Nothing is deleted when the default theme is the solo theme itself, or when it has no blocks.'),
     ];
 
     $form['actions']['#type'] = 'actions';

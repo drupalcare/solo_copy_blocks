@@ -71,11 +71,40 @@ function solo_copy_blocks_theme_exists($theme_name) {
 function _solo_copy_blocks_and_config_to_solo_theme($source_theme, $target_theme, $default_region = 'footer_menu') {
   // Check if both the source and target themes are installed.
   if (solo_copy_blocks_theme_exists($source_theme) && solo_copy_blocks_theme_exists($target_theme)) {
-    // Delete blocks from the 'solo' theme.
-    solo_copy_blocks__solo_remove_all_blocks('solo');
+    // Copying a theme onto itself would delete every block in it below and
+    // then find nothing left to copy back: the site loses its whole block
+    // layout. Refuse before anything is deleted.
+    if ($source_theme === $target_theme) {
+      \Drupal::logger('solo_copy_blocks')->warning('Copy refused: the source theme @source is the same as the target theme @target. No blocks were deleted.', [
+        '@source' => $source_theme,
+        '@target' => $target_theme,
+      ]);
+      \Drupal::messenger()->addError(t('Nothing was copied: the source theme %source is the same as the target theme %target. Set your previous theme (for example W3CSS) as the default theme, then try again. No blocks were deleted.', [
+        '%source' => $source_theme,
+        '%target' => $target_theme,
+      ]));
+      return;
+    }
 
+    // Load the source blocks BEFORE deleting anything in the target theme.
     $block_storage = \Drupal::entityTypeManager()->getStorage('block');
     $blocks = $block_storage->loadByProperties(['theme' => $source_theme]);
+
+    // With nothing to copy, deleting the target's blocks is pure loss.
+    if (empty($blocks)) {
+      \Drupal::logger('solo_copy_blocks')->warning('Copy refused: the source theme @source has no blocks. The blocks in @target were left unchanged.', [
+        '@source' => $source_theme,
+        '@target' => $target_theme,
+      ]);
+      \Drupal::messenger()->addError(t('Nothing was copied: the source theme %source has no blocks. The blocks in %target were left unchanged.', [
+        '%source' => $source_theme,
+        '%target' => $target_theme,
+      ]));
+      return;
+    }
+
+    // Replace the target theme's blocks with the source theme's.
+    solo_copy_blocks__solo_remove_all_blocks($target_theme);
 
     // Sort blocks by weight.
     uasort($blocks, function ($a, $b) {
@@ -148,10 +177,16 @@ function _solo_copy_blocks_and_config_to_solo_theme($source_theme, $target_theme
     }
 
     if ($blocks_migrated > 0) {
-      \Drupal::messenger()->addMessage("{$blocks_migrated} blocks have been copied from {$source_theme} to {$target_theme}.");
+      \Drupal::messenger()->addMessage(\Drupal::translation()->formatPlural($blocks_migrated, '1 block has been copied from %source to %target.', '@count blocks have been copied from %source to %target.', [
+        '%source' => $source_theme,
+        '%target' => $target_theme,
+      ]));
     }
     else {
-      \Drupal::messenger()->addMessage("No blocks needed migration from {$source_theme} to {$target_theme}.");
+      \Drupal::messenger()->addMessage(t('No blocks needed migration from %source to %target.', [
+        '%source' => $source_theme,
+        '%target' => $target_theme,
+      ]));
     }
   }
   else {
@@ -159,7 +194,7 @@ function _solo_copy_blocks_and_config_to_solo_theme($source_theme, $target_theme
       '@source' => $source_theme,
       '@target' => $target_theme,
     ]);
-    \Drupal::messenger()->addError('Operation aborted because one or both of the themes are not installed.');
+    \Drupal::messenger()->addError(t('Operation aborted because one or both of the themes are not installed.'));
   }
 }
 

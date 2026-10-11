@@ -14,6 +14,9 @@
     "require": {
         "drupal/core": "^10.1 || ^11 || ^12"
     },
+    "require-dev": {
+        "drupal/solo": "^1.0"
+    },
     "support": {
         "issues": "https://drupal.org/project/issues/solo_copy_blocks",
         "source": "https://git.drupalcode.org/project/solo_copy_blocks"
