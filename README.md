@@ -14,7 +14,7 @@ ease.
 - **Block Sorting:** Maintain block order and weight during migration.
 - **Theme Compatibility:** Exclusively designed for use with W3CSS theme and
 sub-themes.
-- **Region Mapping:** Automatically map regions between themes for a seamless
+- **Region Mapping:** Automatically map regions between themes for a smooth
 transition.
 - **Preserve Block Status:** Retain block status (enabled or disabled) during
 migration.
@@ -54,7 +54,7 @@ configuration export.
 
 - Compatible with Drupal 8 and Drupal 9.
 - Specifically designed for use with the W3CSS theme and its sub-themes.
-Compatibility with other themes may vary.
+Compatibility with other themes depends on each theme.
 
 
 ## Maintainers
