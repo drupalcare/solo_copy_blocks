@@ -1,6 +1,6 @@
 name: 'Solo Copy Blocks'
 type: module
-description: 'Copies blocks and their settings from the W3CSS Theme or one of its sub-themes to the Solo theme.'
+description: 'Copies the blocks and their settings from the default theme, such as the W3CSS Theme or one of its sub-themes, to the Solo theme, replacing the blocks already placed in Solo.'
 package: 'Solo'
 core_version_requirement: ^10.1 || ^11 || ^12
 configure: solo_copy_blocks.admin_form
