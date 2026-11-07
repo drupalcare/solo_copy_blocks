@@ -1,0 +1,34 @@
+/* The Solo Copy Blocks header band: logo, name and purpose, as on the other product
+   settings pages. The rule under it is the Solo Copy Blocks palette colour. */
+.solo-copy-blocks-band {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid color-mix(in srgb, currentcolor 15%, transparent);
+  border-block-end: 3px solid #6957b5;
+  border-radius: 0.75rem;
+}
+
+.solo-copy-blocks-band__logo {
+  flex: none;
+  inline-size: 2.75rem;
+  block-size: 3rem;
+  background: url("../images/logo.svg") no-repeat center / contain;
+}
+
+.solo-copy-blocks-band__text {
+  min-inline-size: 0;
+}
+
+.solo-copy-blocks-band__name {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.solo-copy-blocks-band__purpose {
+  margin: 0.25rem 0 0;
+}
